@@ -5,7 +5,7 @@ import org.springframework.boot.SpringBootConfiguration
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.scheduling.annotation.EnableScheduling
 import org.springframework.scheduling.annotation.Scheduled
-import java.util.concurrent.TimeUnit.MILLISECONDS
+import java.util.concurrent.TimeUnit.SECONDS
 import kotlin.random.Random
 
 @SpringBootConfiguration
@@ -15,7 +15,7 @@ class ApplicationConfiguration {
 
     private val log = logger<ApplicationConfiguration>()
 
-    @Scheduled(fixedRate = 500, timeUnit = MILLISECONDS)
+    @Scheduled(fixedRate = 1, timeUnit = SECONDS)
     fun printLog() {
         val randomInt = randomNumber()
         if (randomInt % 50 == 0) {

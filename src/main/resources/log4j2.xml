@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
+
+    <Properties>
+        <Property name="log.path">target/logs</Property>
+    </Properties>
+
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout
@@ -7,8 +12,8 @@
         </Console>
 
         <RollingFile name="RollingFile"
-                     fileName="./target/logs/spring-boot-logger-log4j2.log"
-                     filePattern="./target/logs/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
+                     fileName="${log.path}/application.log"
+                     filePattern="${log.path}/$${date:yyyy-MM}/application-%d{-dd-MMMM-yyyy}-%i.log.gz">
             <PatternLayout>
                 <pattern>%d %p %C{1.} [%t] %m%n</pattern>
             </PatternLayout>
@@ -29,9 +34,5 @@
             <AppenderRef ref="Console" />
             <AppenderRef ref="RollingFile" />
         </Root>
-
-        <!-- LOG "com.baeldung*" at TRACE level -->
-        <Logger name="com.baeldung" level="trace"></Logger>
     </Loggers>
-
 </Configuration>
